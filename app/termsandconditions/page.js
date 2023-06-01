@@ -24,7 +24,7 @@ Specify that users must use the website only for lawful purposes and in a manner
 Make users solely responsible for any content they post on the website. <br />
 <br />
 <span className="font-bold">Disclaimer: </span> <br />
-State that the website and its content are provided on an "as is" basis without any warranties, expressed or implied. <br />
+State that the website and its content are provided on an &quot;as is&quot; basis without any warranties, expressed or implied. <br />
 Clarify that Lakshya Roonwal does not guarantee the accuracy, reliability, or completeness of the information on the website. <br />
 <br />
 <span className="font-bold">Limitation of Liability: </span> <br />

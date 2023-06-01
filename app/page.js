@@ -1,6 +1,5 @@
 import Hero from "./components/home/Hero";
 import BlogsSection from "./components/home/BlogsSection";
-import Temp from "./components/Temp";
 
 export default async function Home() {
   console.log(process.env.NEXT_PUBLIC_HOST)
@@ -14,7 +13,6 @@ export default async function Home() {
     <>
       <Hero />
       <BlogsSection blogsdata={data} />
-      {/* <Temp/> */}
     </>
   );
 }

@@ -17,7 +17,7 @@ const BlogsSection = ({ blogsdata }) => {
             My Journey
           </h1>
           <p className="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500 sm:text-xl dark:text-gray-400">
-            Discover the coding projects and challenges I'm working on as I
+            Discover the coding projects and challenges I&apos;m working on as I
             explore different programming languages and technologies.
           </p>
         </div>

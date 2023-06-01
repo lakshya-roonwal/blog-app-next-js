@@ -1,37 +1,32 @@
-"use client"
-import React, { useState,useEffect } from 'react'
-import CodeBlock from './CodeBlock';
-import Loader from './Loader';
+"use client";
+import React, { useState, useEffect } from "react";
+import CodeBlock from "./CodeBlock";
+import Loader from "./Loader";
 
-const BlogArticle = ({searchId}) => {
-  
+const BlogArticle = ({ searchId }) => {
   const [blog, setBlog] = useState({});
 
   const getSingleBlog = async () => {
-    try
-    {
-    const responce = await fetch(
-      `${process.env.NEXT_PUBLIC_HOST}/api/blog/getsingleblog`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id: searchId }),
-      }
-    );
-    const data = await responce.json();
-    // console.log(data);
-    setBlog(data);
-  }
-  catch(error)
-  {
-    console.log(error);
-  }
+    try {
+      const responce = await fetch(
+        `${process.env.NEXT_PUBLIC_HOST}/api/blog/getsingleblog`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: searchId }),
+        }
+      );
+      const data = await responce.json();
+      // console.log(data);
+      setBlog(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-
-  // For fetching the data from server 
+  // For fetching the data from server
   useEffect(() => {
     getSingleBlog();
   }, []);
@@ -45,7 +40,7 @@ const BlogArticle = ({searchId}) => {
   const [jsx, setJsx] = useState([]);
   const convertToJsx = () => {
     if (blog.content) {
-      blog.content.map((e) => {
+      blog.content.map((e,index) => {
         switch (e.type) {
           case "paragraph":
             setJsx((jsx) => {
@@ -82,9 +77,12 @@ const BlogArticle = ({searchId}) => {
                         ? "list-disc mx-4"
                         : "list-decimal mx-4",
                   },
-                  e.data.items.map((listItem) => {
+                  e.data.items.map((listItem,index) => {
                     return (
-                      <li dangerouslySetInnerHTML={{ __html: listItem }}></li>
+                      <li
+                        dangerouslySetInnerHTML={{ __html: listItem }}
+                        key={index}
+                      ></li>
                     );
                   })
                 ),
@@ -129,14 +127,14 @@ const BlogArticle = ({searchId}) => {
                 break;
             }
             break;
-            case "code":
-              setJsx((jsx) => {
-                return [
-                  ...jsx,
-                  <CodeBlock codeString={e.data.code}/>,
-                ];
-              });
-              break;
+          case "code":
+            setJsx((jsx) => {
+              return [
+                ...jsx,
+                <CodeBlock key={e.data.code} codeString={e.data.code} />,
+              ];
+            });
+            break;
           default:
             console.log("hello world");
             break;
@@ -147,20 +145,20 @@ const BlogArticle = ({searchId}) => {
 
   return (
     <main className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900">
-        <div className="flex justify-between px-4 mx-auto max-w-screen-xl ">
-          <article className="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
-            <header className="mb-4 lg:mb-6 not-format">
-              <h1 className="mb-4 text-4xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white underline">
-                {blog.title}
-              </h1>
-            </header>
-            {jsx.map((e) => {
-              return e;
-            })}
-          </article>
-        </div>
-      </main>
-  )
-}
+      <div className="flex justify-between px-4 mx-auto max-w-screen-xl ">
+        <article className="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+          <header className="mb-4 lg:mb-6 not-format">
+            <h1 className="mb-4 text-4xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white underline">
+              {blog.title}
+            </h1>
+          </header>
+          {jsx.map((e,index) => {
+            return <React.Fragment key={index}>{e}</React.Fragment>;
+          })}
+        </article>
+      </div>
+    </main>
+  );
+};
 
-export default BlogArticle
+export default BlogArticle;
