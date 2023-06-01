@@ -24,6 +24,9 @@ const BlogArticle = ({ searchId }) => {
     } catch (error) {
       console.log(error);
     }
+  
+  
+  
   };
 
   // For fetching the data from server
@@ -49,6 +52,7 @@ const BlogArticle = ({ searchId }) => {
                 React.createElement("p", {
                   dangerouslySetInnerHTML: { __html: e.data.text },
                   className: "text-justify leading-relaxed",
+                  key:index
                 }),
               ];
             });
@@ -61,6 +65,7 @@ const BlogArticle = ({ searchId }) => {
                 React.createElement("img", {
                   src: e.data.url,
                   alt: e.data.caption,
+                  key:index
                 }),
               ];
             });
@@ -80,8 +85,8 @@ const BlogArticle = ({ searchId }) => {
                   e.data.items.map((listItem,index) => {
                     return (
                       <li
-                        dangerouslySetInnerHTML={{ __html: listItem }}
                         key={index}
+                        dangerouslySetInnerHTML={{ __html: listItem }}
                       ></li>
                     );
                   })
@@ -99,6 +104,7 @@ const BlogArticle = ({ searchId }) => {
                     React.createElement("h1", {
                       dangerouslySetInnerHTML: { __html: e.data.text },
                       className: "text-3xl font-extrabold mt-4",
+                      key:index
                     }),
                   ];
                 });
@@ -110,6 +116,7 @@ const BlogArticle = ({ searchId }) => {
                     React.createElement("h2", {
                       dangerouslySetInnerHTML: { __html: e.data.text },
                       className: "text-xl font-extrabold mt-4",
+                      key:index
                     }),
                   ];
                 });
@@ -121,6 +128,7 @@ const BlogArticle = ({ searchId }) => {
                     React.createElement("h3", {
                       dangerouslySetInnerHTML: { __html: e.data.text },
                       className: "text-lg font-bold",
+                      key:index
                     }),
                   ];
                 });
@@ -131,7 +139,7 @@ const BlogArticle = ({ searchId }) => {
             setJsx((jsx) => {
               return [
                 ...jsx,
-                <CodeBlock key={e.data.code} codeString={e.data.code} />,
+                <CodeBlock key={index} codeString={e.data.code} />,
               ];
             });
             break;
