@@ -51,7 +51,7 @@ const BlogArticle = ({ searchId }) => {
                 ...jsx,
                 React.createElement("p", {
                   dangerouslySetInnerHTML: { __html: e.data.text },
-                  className: "text-justify leading-relaxed",
+                  className: "text-justify leading-relaxed dark:text-slate-100",
                   key:index
                 }),
               ];
@@ -79,8 +79,8 @@ const BlogArticle = ({ searchId }) => {
                   {
                     className:
                       e.data.style === "unordered"
-                        ? "list-disc mx-4"
-                        : "list-decimal mx-4",
+                        ? "list-disc mx-4 dark:text-slate-100"
+                        : "list-decimal mx-4 dark:text-slate-100",
                   },
                   e.data.items.map((listItem,index) => {
                     return (
@@ -103,7 +103,7 @@ const BlogArticle = ({ searchId }) => {
                     ...jsx,
                     React.createElement("h1", {
                       dangerouslySetInnerHTML: { __html: e.data.text },
-                      className: "text-3xl font-extrabold mt-4",
+                      className: "text-3xl font-extrabold mt-4 dark:text-slate-100",
                       key:index
                     }),
                   ];
@@ -115,7 +115,7 @@ const BlogArticle = ({ searchId }) => {
                     ...jsx,
                     React.createElement("h2", {
                       dangerouslySetInnerHTML: { __html: e.data.text },
-                      className: "text-xl font-extrabold mt-4",
+                      className: "text-xl font-extrabold mt-4 dark:text-slate-100",
                       key:index
                     }),
                   ];
@@ -127,7 +127,7 @@ const BlogArticle = ({ searchId }) => {
                     ...jsx,
                     React.createElement("h3", {
                       dangerouslySetInnerHTML: { __html: e.data.text },
-                      className: "text-lg font-bold",
+                      className: "text-lg font-bold dark:text-slate-100",
                       key:index
                     }),
                   ];

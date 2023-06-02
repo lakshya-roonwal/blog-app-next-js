@@ -1,9 +1,14 @@
 import React from 'react'
 
-const layout = ({children,params}) => {
-    const searchId=params.blogId;
-    console.log(searchId)
+export const metadata = {
+  title: "Lakshya Roonwal Blog",
+  description: "My Blog Website Where I Share My jouney of Code",
+  keywords: ['Next.js', 'React', 'JavaScript','Programming','Journal','Web Development'],
+  creator: 'Lakshya Roonwal',
+  publisher: 'Lakshya Roonwal',
+};
 
+const layout = async({children,params}) => {
   return (
     <main>{children}</main>
   )

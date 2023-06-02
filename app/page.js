@@ -6,9 +6,7 @@ export default async function Home() {
   const responce = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/blog/`, {
     cache: "no-store",
   });
-  console.log(responce)
   const data = await responce.json();
-  console.log(data,"This is the data log")
   return (
     <>
       <Hero />

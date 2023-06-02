@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   console.log(inter.style.fontFamily)
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} flex flex-col justify-between min-h-[100vh]`} >
       <Navbar />
       <main>{children}</main>
       <Footer />
