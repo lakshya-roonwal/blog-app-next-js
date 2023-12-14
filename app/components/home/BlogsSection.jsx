@@ -9,7 +9,7 @@ const BlogsSection = ({ blogsdata }) => {
     <section className="bg-white dark:bg-gray-900">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <div className="flex w-full mb-20 flex-wrap">
-          <h1 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white lg:w-1/3 lg:mb-0 mb-4">
+          <h1 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white lg:w-1/3 lg:mb-0">
             My Journey
           </h1>
           <p className="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500 sm:text-xl dark:text-gray-400">
