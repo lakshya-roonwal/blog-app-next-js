@@ -7,6 +7,7 @@ export default async function Home() {
     cache: "no-store",
   });
   const data = await responce.json();
+  console.log(data)
   return (
     <>
       <Hero />

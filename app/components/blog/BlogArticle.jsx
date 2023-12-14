@@ -1,155 +1,11 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import CodeBlock from "./CodeBlock";
+
 import Loader from "./Loader";
+import BlogBlock from "./BlogBlock";
 
-const BlogArticle = ({ searchId }) => {
-  const [blog, setBlog] = useState({});
-
-  const getSingleBlog = async () => {
-    try {
-      const responce = await fetch(
-        `${process.env.NEXT_PUBLIC_HOST}/api/blog/getsingleblog`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ id: searchId }),
-        }
-      );
-      const data = await responce.json();
-      // console.log(data);
-      setBlog(data);
-    } catch (error) {
-      console.log(error);
-    }
-  
-  
-  
-  };
-
-  // For fetching the data from server
-  useEffect(() => {
-    getSingleBlog();
-  }, []);
-
-  // Converting the json to jsx - this will run when the blog gets all the data
-  useEffect(() => {
-    convertToJsx();
-  }, [blog]);
-
-  // Function for converting json to jsx
-  const [jsx, setJsx] = useState([]);
-  const convertToJsx = () => {
-    if (blog.content) {
-      blog.content.map((e,index) => {
-        switch (e.type) {
-          case "paragraph":
-            setJsx((jsx) => {
-              return [
-                ...jsx,
-                React.createElement("p", {
-                  dangerouslySetInnerHTML: { __html: e.data.text },
-                  className: "text-justify leading-relaxed dark:text-slate-100",
-                  key:index
-                }),
-              ];
-            });
-            break;
-
-          case "image":
-            setJsx((jsx) => {
-              return [
-                ...jsx,
-                React.createElement("img", {
-                  src: e.data.url,
-                  alt: e.data.caption,
-                  key:index
-                }),
-              ];
-            });
-            break;
-          case "list":
-            setJsx((jsx) => {
-              return [
-                ...jsx,
-                React.createElement(
-                  "ul",
-                  {
-                    className:
-                      e.data.style === "unordered"
-                        ? "list-disc mx-4 dark:text-slate-100"
-                        : "list-decimal mx-4 dark:text-slate-100",
-                  },
-                  e.data.items.map((listItem,index) => {
-                    return (
-                      <li
-                        key={index}
-                        dangerouslySetInnerHTML={{ __html: listItem }}
-                      ></li>
-                    );
-                  })
-                ),
-              ];
-            });
-            break;
-
-          case "header":
-            switch (e.data.level) {
-              case 1:
-                setJsx((jsx) => {
-                  return [
-                    ...jsx,
-                    React.createElement("h1", {
-                      dangerouslySetInnerHTML: { __html: e.data.text },
-                      className: "text-3xl font-extrabold mt-4 dark:text-slate-100",
-                      key:index
-                    }),
-                  ];
-                });
-                break;
-              case 2:
-                setJsx((jsx) => {
-                  return [
-                    ...jsx,
-                    React.createElement("h2", {
-                      dangerouslySetInnerHTML: { __html: e.data.text },
-                      className: "text-xl font-extrabold mt-4 dark:text-slate-100",
-                      key:index
-                    }),
-                  ];
-                });
-                break;
-              case 3:
-                setJsx((jsx) => {
-                  return [
-                    ...jsx,
-                    React.createElement("h3", {
-                      dangerouslySetInnerHTML: { __html: e.data.text },
-                      className: "text-lg font-bold dark:text-slate-100",
-                      key:index
-                    }),
-                  ];
-                });
-                break;
-            }
-            break;
-          case "code":
-            setJsx((jsx) => {
-              return [
-                ...jsx,
-                <CodeBlock key={index} codeString={e.data.code} />,
-              ];
-            });
-            break;
-          default:
-            console.log("hello world");
-            break;
-        }
-      });
-    }
-  };
+const BlogArticle = ({ singleBlog }) => {
+  const blog=JSON.parse(singleBlog.value);
+  console.log(blog)
 
   return (
     <main className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900">
@@ -160,9 +16,16 @@ const BlogArticle = ({ searchId }) => {
               {blog.title}
             </h1>
           </header>
-          {jsx.map((e,index) => {
+          {/* {jsx.map((e,index) => {
             return <React.Fragment key={index}>{e}</React.Fragment>;
-          })}
+          })} */}
+          {
+          blog.content?
+          blog.content.map((e,index) => {
+              return <BlogBlock block={e}/>
+            })
+          :null
+          }
         </article>
       </div>
     </main>
