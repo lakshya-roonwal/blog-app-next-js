@@ -13,7 +13,7 @@ const BlogArticle = ({ singleBlog }) => {
         <article className="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
           <header className="mb-4 lg:mb-6 not-format">
             <h1 className="mb-4 text-4xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white underline">
-              {blog.title}
+              {blog?.title?blog.title:null}
             </h1>
           </header>
           {/* {jsx.map((e,index) => {

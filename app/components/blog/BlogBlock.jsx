@@ -2,7 +2,6 @@ import Image from "next/image";
 import CodeBlock from "./CodeBlock";
 
 const BlogBlock = ({ block }) => {
-  console.log("This is block", block);
   const { type, data } = block;
   if (type === "paragraph") {
     return (
@@ -46,7 +45,6 @@ const BlogBlock = ({ block }) => {
         }`}
       >
         {data.items.map((listItem, index) => {
-          console.log("hello");
           return (
             <li key={index} dangerouslySetInnerHTML={{ __html: listItem }} className="p-[5px]"></li>
           );
