@@ -16,6 +16,7 @@ const page = async({params,test}) => {
         }
       );
       const data = await responce.json();
+      console.log(data);
       return data;
     } catch (error) {
       console.log(error);
