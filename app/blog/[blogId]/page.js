@@ -22,7 +22,7 @@ const page = async({params,test}) => {
       console.log(error);
     }
   };
-  const singleBlog=getSingleBlog();
+  const singleBlog=await getSingleBlog();
 
   return (
     <>
