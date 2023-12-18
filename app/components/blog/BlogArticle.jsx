@@ -22,7 +22,7 @@ const BlogArticle = ({ singleBlog }) => {
           {
           blog.content?
           blog.content.map((e,index) => {
-              return <BlogBlock block={e}/>
+              return <BlogBlock key={index} block={e}/>
             })
           :null
           }
