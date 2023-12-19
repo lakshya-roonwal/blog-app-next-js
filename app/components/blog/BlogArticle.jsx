@@ -1,10 +1,8 @@
-"use client";
-
 import Loader from "./Loader";
 import BlogBlock from "./BlogBlock";
 
 const BlogArticle = ({ singleBlog }) => {
-  const blog=JSON.parse(singleBlog.value);
+  const blog=singleBlog;
   console.log(blog)
 
   return (

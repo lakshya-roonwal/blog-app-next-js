@@ -4,12 +4,11 @@ export async function connect(){
     try{
         mongoose.connect(process.env.MONGO_URL)
         const connection=mongoose.connection;
-
-
         connection.on('connected',()=>{
             console.log("Mongodb Conected Succesfully")
         })
         connection.on('error',(err)=>{
+            console.log(process.env.MONGO_URL)
             console.log("Mongodb Conection Error")
             console.log(err)
             process.exit();

@@ -21,7 +21,8 @@ const page = async({params,test}) => {
       console.log(error);
     }
   };
-  const singleBlog=getSingleBlog();
+  const singleBlog=await getSingleBlog();
+  console.log("This is Single Blog",singleBlog);
 
   return (
     <>
