@@ -7,7 +7,6 @@ const page = async({params,test}) => {
       const responce = await fetch(
         `${process.env.NEXT_PUBLIC_HOST}/api/blog/getsingleblog`,
         {
-          cache: "no-store",
           method: "POST",
           headers: {
             "Content-Type": "application/json",
