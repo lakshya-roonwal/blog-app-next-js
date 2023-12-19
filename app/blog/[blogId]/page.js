@@ -23,10 +23,7 @@ const page = async({params,test}) => {
     }
   };
   const singleBlog=await getSingleBlog();
-<<<<<<< HEAD
   console.log("This is Single Blog",singleBlog);
-=======
->>>>>>> 08aa30a186da29960d7c2adcc900226f2b6e4604
 
   return (
     <>
