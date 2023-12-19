@@ -1,28 +1,31 @@
 import BlogArticle from "../../components/blog/BlogArticle";
+import axios from 'axios';
 
 const page = async({params,test}) => {
-  const searchId=params.blogId;
+  const searchId = params.blogId;
+
   const getSingleBlog = async () => {
     try {
-      const responce = await fetch(
+      const response = await axios.post(
         `${process.env.NEXT_PUBLIC_HOST}/api/blog/getsingleblog`,
+        { id: searchId },
         {
-          method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ id: searchId }),
         }
       );
-      const data = await responce.json();
+  
+      const data = response.data;
       console.log(data);
       return data;
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
-  const singleBlog=await getSingleBlog();
-  console.log("This is Single Blog",singleBlog);
+  
+  const singleBlog = await getSingleBlog();
+  console.log('This is Single Blog', singleBlog)
 
   return (
     <>
