@@ -3,6 +3,7 @@ import BlogBlock from "./BlogBlock";
 
 const BlogArticle = ({ singleBlog }) => {
   const blog=singleBlog;
+  // Some Random Thing
   console.log(blog)
 
   return (
@@ -20,7 +21,7 @@ const BlogArticle = ({ singleBlog }) => {
           {
           blog.content?
           blog.content.map((e,index) => {
-              return <BlogBlock block={e}/>
+              return <BlogBlock key={index} block={e}/>
             })
           :null
           }

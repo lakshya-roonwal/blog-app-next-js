@@ -16,13 +16,17 @@ const page = async({params,test}) => {
         }
       );
       const data = await responce.json();
+      console.log(data);
       return data;
     } catch (error) {
       console.log(error);
     }
   };
   const singleBlog=await getSingleBlog();
+<<<<<<< HEAD
   console.log("This is Single Blog",singleBlog);
+=======
+>>>>>>> 08aa30a186da29960d7c2adcc900226f2b6e4604
 
   return (
     <>

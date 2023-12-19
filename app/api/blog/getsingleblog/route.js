@@ -8,6 +8,7 @@ connect();
 export async function POST(request) {
   const body = await request.json();
   const {id}=body;
+  console.log(id);
   try {
     const blog = await Blog.findById(id);
     if (!blog) {
